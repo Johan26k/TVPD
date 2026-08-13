@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ramona Gómez</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* =========================================
+   TOKENS
+========================================== */
+:root{
+  --blanco:      #FFFFFF;
+  --hueso:       #FAFAF8;
+  --gris-100:    #F1F1EF;
+  --gris-200:    #E4E4E1;
+  --gris-400:    #B9B9B4;
+  --gris-600:    #7A7A75;
+  --gris-800:    #3D3D39;
+  --carbon:      #201F1D;
+  --linea:       #D8D8D3;
+
+  --display: 'Fraunces', serif;
+  --texto:   'Work Sans', sans-serif;
+
+  --radio: 2px;
+}
+
+*{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+body{
+  margin:0;
+  font-family: var(--texto);
+  color: var(--gris-800);
+  background: var(--hueso);
+  -webkit-font-smoothing: antialiased;
+}
+
+img{ max-width:100%; display:block; }
+
+h1,h2,h3{
+  font-family: var(--display);
+  color: var(--carbon);
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+a{ color: inherit; text-decoration:none; }
+
+.eyebrow{
+  font-family: var(--texto);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gris-600);
+  display:flex;
+  align-items:center;
+  gap: 0.6rem;
+}
+.eyebrow::before{
+  content:"";
+  width: 22px;
+  height:1px;
+  background: var(--gris-400);
+  display:inline-block;
+}
+
+.wrap{
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 6vw;
+}
+
+section{ padding: clamp(3.5rem, 8vw, 7rem) 0; }
+
+.hairline{
+  border:none;
+  border-top:1px solid var(--linea);
+  margin:0;
+}
+
+/* =========================================
+   HEADER / NAV
+========================================== */
+header.site-header{
+  position: sticky;
+  top:0;
+  z-index: 50;
+  background: rgba(250,250,248,0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--linea);
+}
+.nav-inner{
+  max-width:1120px;
+  margin:0 auto;
+  padding: 1.1rem 6vw;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:2rem;
+}
+.brand{
+  font-family: var(--display);
+  font-size: 1.15rem;
+  color: var(--carbon);
+  letter-spacing: 0.01em;
+  white-space:nowrap;
+}
+.brand span{ color: var(--gris-400); font-style: italic; }
+
+nav.links{
+  display:flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+nav.links a{
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--gris-600);
+  position: relative;
+  padding-bottom: 3px;
+  transition: color .25s ease;
+}
+nav.links a:hover{ color: var(--carbon); }
+nav.links a::after{
+  content:"";
+  position:absolute;
+  left:0; right:0; bottom:0;
+  height:1px;
+  background: var(--carbon);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .25s ease;
+}
+nav.links a:hover::after{ transform: scaleX(1); }
+
+.nav-cta{
+  font-size:0.78rem;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+  border:1px solid var(--carbon);
+  padding: 0.55rem 1.1rem;
+  white-space:nowrap;
+  transition: background .25s ease, color .25s ease;
+}
+.nav-cta:hover{ background: var(--carbon); color: var(--blanco); }
+
+/* =========================================
+   HERO
+========================================== */
+.hero{
+  padding: clamp(4rem,10vw,8rem) 0 clamp(3rem,6vw,5rem);
+  position: relative;
+  overflow:hidden;
+}
+.hero-grid{
+  display:grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 4rem;
+  align-items:center;
+}
+.hero h1{
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.05;
+  font-weight: 400;
+  margin: 1.1rem 0 1.4rem;
+}
+.hero h1 em{
+  font-style: italic;
+  color: var(--gris-600);
+}
+.hero p.lead{
+  font-size: 1.05rem;
+  color: var(--gris-600);
+  max-width: 46ch;
+  line-height:1.65;
+  margin-bottom: 2.2rem;
+}
+.hero-actions{
+  display:flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items:center;
+}
+.btn-primary{
+  background: var(--carbon);
+  color: var(--blanco);
+  padding: 0.95rem 1.8rem;
+  font-size: 0.85rem;
+  letter-spacing:0.04em;
+  text-transform: uppercase;
+  border:1px solid var(--carbon);
+  transition: background .25s ease, transform .25s ease;
+}
+.btn-primary:hover{ background: transparent; color: var(--carbon); }
+.btn-ghost{
+  font-size: 0.85rem;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  color: var(--gris-800);
+  border-bottom: 1px solid var(--gris-400);
+  padding-bottom: 3px;
+}
+.btn-ghost:hover{ border-color: var(--carbon); }
+
+.hero-visual{
+  position: relative;
+  aspect-ratio: 4/5;
+  background: var(--gris-100);
+  border: 1px solid var(--linea);
+  overflow:hidden;
+}
+.hero-visual img{
+  width:100%; height:100%; object-fit:cover;
+  filter: grayscale(15%) contrast(1.02);
+}
+.hero-visual .tag{
+  position:absolute;
+  bottom: 1.2rem; left: 1.2rem;
+  background: rgba(255,255,255,0.92);
+  padding: 0.7rem 1rem;
+  font-size: 0.72rem;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color: var(--gris-800);
+  border:1px solid var(--linea);
+}
+
+/* signature smile-line */
+.smile-line{
+  width:100%;
+  margin-top: 3.5rem;
+  overflow: hidden;
+}
+.smile-line svg{ width:100%; height:auto; display:block; }
+.smile-line path{
+  stroke: var(--gris-400);
+  stroke-width: 1;
+  fill:none;
+  stroke-dasharray: 900;
+  stroke-dashoffset: 900;
+  animation: draw 2.4s ease forwards 0.4s;
+}
+@keyframes draw{ to{ stroke-dashoffset:0; } }
+@media (prefers-reduced-motion: reduce){
+  .smile-line path{ animation:none; stroke-dashoffset:0; }
+}
+
+/* =========================================
+   SECTION HEADS
+========================================== */
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:2rem;
+  margin-bottom: 3rem;
+  flex-wrap:wrap;
+}
+.section-head h2{
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+  font-weight: 400;
+  margin-top: 0.6rem;
+}
+.section-head p{
+  max-width: 34ch;
+  color: var(--gris-600);
+  font-size: 0.95rem;
+  line-height:1.6;
+}
+
+/* =========================================
+   INTRO / BIENVENIDA
+========================================== */
+.intro{
+  display:grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 4rem;
+  align-items:center;
+}
+.intro-media{
+  border:1px solid var(--linea);
+  aspect-ratio: 5/4;
+  overflow:hidden;
+  background: var(--gris-100);
+}
+.intro-media img{ width:100%; height:100%; object-fit:cover; filter: grayscale(20%); }
+.intro-text p{
+  color: var(--gris-800);
+  line-height: 1.75;
+  font-size: 1rem;
+  margin-bottom: 1.2rem;
+}
+.intro-text p:last-child{ margin-bottom:0; }
+
+/* =========================================
+   SERVICIOS — LISTA NUMERADA CLÍNICA
+========================================== */
+.servicios-list{
+  border-top: 1px solid var(--linea);
+}
+.servicio-row{
+  display:grid;
+  grid-template-columns: 70px 1fr 2fr 130px;
+  gap: 2rem;
+  align-items:center;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid var(--linea);
+  transition: background .2s ease;
+}
+.servicio-row:hover{ background: var(--gris-100); }
+.servicio-num{
+  font-family: var(--display);
+  font-style: italic;
+  color: var(--gris-400);
+  font-size: 1rem;
+}
+.servicio-nombre{
+  font-family: var(--display);
+  font-size: 1.15rem;
+  color: var(--carbon);
+  font-weight: 500;
+}
+.servicio-desc{
+  color: var(--gris-600);
+  font-size: 0.92rem;
+  line-height:1.55;
+}
+.servicio-call{
+  text-align:right;
+  font-size: 0.78rem;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  color: var(--gris-600);
+  white-space:nowrap;
+}
+
+@media (max-width: 760px){
+  .servicio-row{
+    grid-template-columns: 40px 1fr;
+    grid-template-areas:
+      "num nombre"
+      ". desc"
+      ". call";
+    row-gap: 0.4rem;
+  }
+  .servicio-num{ grid-area: num; }
+  .servicio-nombre{ grid-area: nombre; }
+  .servicio-desc{ grid-area: desc; }
+  .servicio-call{ grid-area: call; text-align:left; }
+}
+
+/* =========================================
+   ESTÉTICA — TARJETAS
+========================================== */
+.estetica-grid{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--linea);
+  border: 1px solid var(--linea);
+}
+.card-estetica{
+  background: var(--blanco);
+  padding: 2rem 1.6rem 2.2rem;
+  display:flex;
+  flex-direction:column;
+  gap: 1rem;
+}
+.card-estetica .card-media{
+  aspect-ratio: 1/1;
+  background: var(--gris-100);
+  overflow:hidden;
+  margin-bottom: 0.4rem;
+}
+.card-estetica img{ width:100%; height:100%; object-fit:cover; filter: grayscale(20%); transition: filter .4s ease, transform .5s ease; }
+.card-estetica:hover img{ filter:grayscale(0%); transform: scale(1.04); }
+.card-estetica h3{
+  font-size: 1.05rem;
+  font-weight:500;
+}
+.card-estetica p{
+  color: var(--gris-600);
+  font-size: 0.88rem;
+  line-height:1.55;
+  flex-grow:1;
+}
+.card-cta{
+  font-size: 0.75rem;
+  letter-spacing:0.05em;
+  text-transform:uppercase;
+  color: var(--gris-800);
+  border-bottom:1px solid var(--gris-400);
+  align-self:flex-start;
+  padding-bottom:2px;
+  background:none;
+  border-top:none; border-left:none; border-right:none;
+  font-family: var(--texto);
+  cursor:pointer;
+}
+.card-cta:hover{ border-color: var(--carbon); }
+
+@media (max-width: 900px){
+  .estetica-grid{ grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 560px){
+  .estetica-grid{ grid-template-columns: 1fr; }
+}
+
+/* =========================================
+   PROMOCIÓN
+========================================== */
+.promo{
+  background: var(--carbon);
+  color: var(--gris-200);
+  padding: clamp(3.5rem,7vw,6rem) 0;
+  position: relative;
+}
+.promo .wrap{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items:center;
+}
+.promo .eyebrow{ color: var(--gris-400); }
+.promo .eyebrow::before{ background: var(--gris-600); }
+.promo h2{
+  color: var(--blanco);
+  font-size: clamp(1.9rem,3.6vw,2.8rem);
+  font-weight:400;
+  margin: 0.8rem 0 1rem;
+}
+.promo p{
+  color: var(--gris-400);
+  line-height:1.7;
+  max-width: 42ch;
+}
+.promo-box{
+  border:1px solid #4a4944;
+  padding: 2rem;
+}
+.promo-box p.big{
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--blanco);
+  margin-bottom: 1.4rem;
+}
+.promo-contact{
+  display:flex;
+  flex-direction:column;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--gris-200);
+  margin-bottom: 1.6rem;
+}
+.btn-inverse{
+  display:inline-block;
+  background: var(--blanco);
+  color: var(--carbon);
+  padding: 0.9rem 1.6rem;
+  font-size: 0.82rem;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  border: 1px solid var(--blanco);
+  transition: background .25s ease, color .25s ease;
+}
+.btn-inverse:hover{ background:transparent; color: var(--blanco); }
+
+@media (max-width: 800px){
+  .promo .wrap{ grid-template-columns:1fr; }
+}
+
+/* =========================================
+   NOSOTROS
+========================================== */
+.nosotros{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+.mv-col p{
+  color: var(--gris-600);
+  line-height:1.7;
+  font-size: 0.95rem;
+  margin: 0.6rem 0 1.8rem;
+}
+.mv-col h3{
+  font-size: 1.05rem;
+  font-weight:500;
+}
+.info-list{
+  border-top: 1px solid var(--linea);
+  margin-top: 0.5rem;
+}
+.info-row{
+  display:flex;
+  justify-content:space-between;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--linea);
+  font-size: 0.9rem;
+}
+.info-row span:first-child{ color: var(--gris-600); }
+.info-row span:last-child{ color: var(--carbon); font-weight:500; }
+
+@media (max-width: 800px){
+  .nosotros{ grid-template-columns:1fr; gap: 2.5rem; }
+}
+
+/* =========================================
+   FOOTER
+========================================== */
+footer{
+  background: var(--gris-100);
+  border-top: 1px solid var(--linea);
+  padding: 3.5rem 0 2rem;
+}
+.footer-grid{
+  display:grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 2.5rem;
+  padding-bottom: 2.2rem;
+}
+.footer-grid h2{ font-size: 1.2rem; font-weight:500; }
+.footer-grid p{ color: var(--gris-600); font-size: 0.88rem; line-height:1.6; margin-top:0.6rem;}
+.footer-col h4{
+  font-size: 0.72rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color: var(--gris-600);
+  margin-bottom: 1rem;
+}
+.footer-col a, .footer-col p{
+  display:block;
+  font-size: 0.9rem;
+  color: var(--gris-800);
+  margin-bottom: 0.6rem;
+}
+.footer-col a:hover{ color: var(--carbon); text-decoration: underline; }
+.footer-bottom{
+  border-top: 1px solid var(--linea);
+  padding-top: 1.6rem;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:1rem;
+  font-size: 0.78rem;
+  color: var(--gris-600);
+}
+
+/* =========================================
+   BOTÓN WHATSAPP FLOTANTE
+========================================== */
+.wa-float{
+  position: fixed;
+  bottom: 1.6rem;
+  right: 1.6rem;
+  background: var(--carbon);
+  color: var(--blanco);
+  padding: 0.85rem 1.3rem;
+  font-size: 0.78rem;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  border: 1px solid var(--carbon);
+  z-index: 60;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+@media (max-width: 900px){
+  .hero-grid, .intro{ grid-template-columns:1fr; }
+  .hero-visual{ order:-1; }
+  .servicio-row{ grid-template-columns: 40px 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================================
+     HEADER
+========================================== -->
+<header class="site-header">
+  <div class="nav-inner">
+    <div class="brand">Ramona Gómez</div>
+    <nav class="links">
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">General</a>
+      <a href="#promocion">Promoción</a>
+    </nav>
+    <a href="https://wa.me/573048203232" target="_blank" class="nav-cta">Agendar cita</a>
+  </div>
+</header>
+
+
+<main>
+
+  <!-- =====================================
+       HERO
+  ====================================== -->
+  <section id="inicio" class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Odontología general &amp; estética</p>
+          <h1>Tu sonrisa, <em>nuestra pasión.</em></h1>
+          <p class="lead">
+            Cuidamos la salud de tu boca y transformamos tu sonrisa
+            con tratamientos personalizados, precisos y pensados
+            para verse — y sentirse — naturales.
+          </p>
+          <div class="hero-actions">
+            <a href="https://wa.me/573048203232" target="_blank" class="btn-primary">Agenda tu valoración</a>
+            <a href="tel:3048203232" class="btn-ghost">304 820 3232</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <img src="https://images.unsplash.com/photo-1704455306251-b4634215d98f?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="Interior de la clínica odontológica">
+          <div class="tag">Calle 12 # 12-103</div>
+        </div>
+      </div>
+
+      <div class="smile-line" aria-hidden="true">
+        <svg viewBox="0 0 1000 60" preserveAspectRatio="none">
+          <path d="M0,15 C 250,15 300,50 500,50 C 700,50 750,15 1000,15" />
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hairline">
+
+  <!-- =====================================
+       BIENVENIDA
+  ====================================== -->
+  <section>
+    <div class="wrap intro">
+      <div class="intro-media">
+        <img src="https://images.unsplash.com/photo-1770321119305-f191c09c5801?fm=jpg&q=80&w=1000&auto=format&fit=crop" alt="Equipo odontológico moderno">
+      </div>
+      <div class="intro-text">
+        <p class="eyebrow">Bienvenidos</p>
+        <h2 style="margin:0.8rem 0 1.4rem; font-size:2.1rem; font-weight:400;">
+          Cuidado integral, resultados naturales
+        </h2>
+        <p>
+          Somos una clínica odontológica dedicada al cuidado integral de
+          la salud oral y a la transformación estética de tu sonrisa.
+        </p>
+        <p>
+          Ofrecemos servicios de odontología general y tratamientos de
+          estética dental, con una atención personalizada y profesional
+          en cada cita.
+        </p>
+        <p>
+          Nuestro objetivo es cuidar tu salud oral y ayudarte a conseguir
+          una sonrisa sana, natural y llena de confianza.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hairline">
+
+  <!-- =====================================
+       ODONTOLOGÍA GENERAL
+  ====================================== -->
+  <section id="servicios">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">01 — Salud oral</p>
+          <h2>Odontología General</h2>
+        </div>
+        <p>Servicios para prevenir, diagnosticar y tratar los problemas de salud oral más comunes.</p>
+      </div>
+
+      <div class="servicios-list">
+
+        <div class="servicio-row">
+          <span class="servicio-num">01</span>
+          <span class="servicio-nombre">Valoración odontológica</span>
+          <span class="servicio-desc">Revisión del estado de tus dientes y encías para identificar problemas y recomendar el tratamiento adecuado.</span>
+          <span class="servicio-call">304 820 3232</span>
+        </div>
+
+        <div class="servicio-row">
+          <span class="servicio-num">02</span>
+          <span class="servicio-nombre">Limpieza dental</span>
+          <span class="servicio-desc">Eliminación de placa bacteriana, manchas y acumulación de sarro.</span>
+          <span class="servicio-call">304 820 3232</span>
+        </div>
+
+        <div class="servicio-row">
+          <span class="servicio-num">03</span>
+          <span class="servicio-nombre">Tratamiento de caries</span>
+          <span class="servicio-desc">Diagnóstico y tratamiento para conservar la estructura y función de los dientes.</span>
+          <span class="servicio-call">304 820 3232</span>
+        </div>
+
+        <div class="servicio-row">
+          <span class="servicio-num">04</span>
+          <span class="servicio-nombre">Restauraciones y resinas</span>
+          <span class="servicio-desc">Materiales estéticos para recuperar la forma y apariencia de los dientes.</span>
+          <span class="servicio-call">304 820 3232</span>
+        </div>
+
+        <div class="servicio-row">
+          <span class="servicio-num">05</span>
+          <span class="servicio-nombre">Cuidado de las encías</span>
+          <span class="servicio-desc">Evaluación y tratamiento de problemas periodontales.</span>
+          <span class="servicio-call">304 820 3232</span>
+        </div>
+
+        <div class="servicio-row">
+          <span class="servicio-num">06</span>
+          <span class="servicio-nombre">Extracciones dentales</span>
+          <span class="servicio-desc">Cuando una pieza no puede conservarse, siempre bajo valoración profesional.</span>
+          <span class="servicio-call">304 820 3232</span>
+        </div>
+
+        <div class="servicio-row">
+          <span class="servicio-num">07</span>
+          <span class="servicio-nombre">Endodoncia</span>
+          <span class="servicio-desc">Tratamiento de conductos para dientes con afectación de la pulpa dental.</span>
+          <span class="servicio-call">304 820 3232</span>
+        </div>
+
+        <div class="servicio-row">
+          <span class="servicio-num">08</span>
+          <span class="servicio-nombre">Ortodoncia</span>
+          <span class="servicio-desc">Mejora la posición de los dientes y contribuye a una mordida adecuada.</span>
+          <span class="servicio-call">304 820 3232</span>
+        </div>
+
+        <div class="servicio-row">
+          <span class="servicio-num">09</span>
+          <span class="servicio-nombre">Implantes dentales</span>
+          <span class="servicio-desc">Alternativas planificadas para reemplazar dientes ausentes.</span>
+          <span class="servicio-call">304 820 3232</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="hairline">
+
+  <!-- =====================================
+       ODONTOLOGÍA ESTÉTICA
+  ====================================== -->
+  <section id="estetica">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">02 — Estética dental</p>
+          <h2>Diseñada para verse natural</h2>
+        </div>
+        <p>Tratamientos enfocados en resultados armónicos y personalizados para tu sonrisa.</p>
+      </div>
+
+      <div class="estetica-grid">
+
+        <article class="card-estetica">
+          <div class="card-media">
+            <img src="https://images.unsplash.com/photo-1489278353717-f64c6ee8a4d2?fm=jpg&q=80&w=600&auto=format&fit=crop" alt="Diseño de sonrisa">
+          </div>
+          <h3>Diseño de sonrisa</h3>
+          <p>Planificación personalizada para mejorar la forma, proporción y apariencia de tu sonrisa.</p>
+          <button class="card-cta">Solicitar información</button>
+        </article>
+
+        <article class="card-estetica">
+          <div class="card-media">
+            <img src="https://images.unsplash.com/photo-1489278353717-f64c6ee8a4d2?fm=jpg&q=80&w=600&auto=format&fit=crop&crop=faces" alt="Blanqueamiento dental">
+          </div>
+          <h3>Blanqueamiento dental</h3>
+          <p>Tratamiento profesional orientado a mejorar el tono y luminosidad de los dientes.</p>
+          <button class="card-cta">Solicitar información</button>
+        </article>
+
+        <article class="card-estetica">
+          <div class="card-media">
+            <img src="https://images.unsplash.com/photo-1770321119305-f191c09c5801?fm=jpg&q=80&w=600&auto=format&fit=crop" alt="Carillas dentales">
+          </div>
+          <h3>Carillas dentales</h3>
+          <p>Mejoran la forma, tamaño y apariencia de determinados dientes.</p>
+          <button class="card-cta">Solicitar información</button>
+        </article>
+
+        <article class="card-estetica">
+          <div class="card-media">
+            <img src="https://images.unsplash.com/photo-1704455306251-b4634215d98f?fm=jpg&q=80&w=600&auto=format&fit=crop" alt="Rehabilitación oral">
+          </div>
+          <h3>Rehabilitación oral</h3>
+          <p>Recupera función, salud y estética de dientes desgastados o con pérdida de estructura.</p>
+          <button class="card-cta">Solicitar información</button>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================================
+       PROMOCIÓN AMOR Y AMISTAD
+  ====================================== -->
+  <section id="promocion" class="promo">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Edición limitada</p>
+        <h2>Celebra el amor<br>con una sonrisa</h2>
+        <p>
+          En esta temporada de Amor y Amistad queremos darte una razón
+          más para sonreír. Agenda tu valoración odontológica y conoce
+          las opciones disponibles para cuidar y mejorar tu sonrisa.
+        </p>
+      </div>
+
+      <div class="promo-box">
+        <p class="big">“Pregunta por nuestra promoción de Amor y Amistad.”</p>
+        <div class="promo-contact">
+          <span>📞 304 820 3232</span>
+          <span>✉️ ramonasonrisas@gmail.com</span>
+        </div>
+        <a href="https://wa.me/573048203232" target="_blank" class="btn-inverse">Agendar promoción</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="hairline">
+
+  <!-- =====================================
+       NOSOTROS
+  ====================================== -->
+  <section id="nosotros">
+    <div class="wrap nosotros">
+      <div>
+        <p class="eyebrow">03 — La clínica</p>
+        <h2 style="margin:0.8rem 0 1.6rem; font-size:2.1rem; font-weight:400;">¿Quiénes somos?</h2>
+        <p style="color:var(--gris-600); line-height:1.75; margin-bottom:1.6rem;">
+          Ramona Gómez Odontología Estética combina odontología general
+          y tratamientos de estética dental, con una atención cercana,
+          profesional y personalizada para que cada paciente se sienta
+          cómodo y bien atendido.
+        </p>
+
+        <div class="mv-col">
+          <h3>Nuestra misión</h3>
+          <p>Brindar servicios odontológicos de calidad, orientados a la prevención, recuperación de la salud oral y mejoramiento de la estética de la sonrisa.</p>
+          <h3>Nuestra visión</h3>
+          <p style="margin-bottom:0;">Ser reconocidos como una clínica comprometida con sus pacientes, ofreciendo tratamientos responsables y una atención humana y profesional.</p>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="font-size:1.05rem; font-weight:500; margin-bottom:0.4rem;">Horario de atención</h3>
+        <div class="info-list">
+          <div class="info-row"><span>Lunes a viernes</span><span>8:00 a.m. – 6:00 p.m.</span></div>
+          <div class="info-row"><span>Sábados</span><span>8:00 a.m. – 2:00 p.m.</span></div>
+          <div class="info-row"><span>Domingos</span><span>Cerrado</span></div>
+          <div class="info-row"><span>Dirección</span><span>Calle 12 # 12-103</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+</main>
+
+
+<!-- =========================================
+     FOOTER
+========================================== -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h2>Ramona Gómez</h2>
+        <p>“Tu sonrisa, nuestra pasión.” Odontología general y estética dental, con atención cercana y profesional.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <a href="tel:3048203232">304 820 3232</a>
+        <a href="mailto:ramonasonrisas@gmail.com">ramonasonrisas@gmail.com</a>
+        <p>Calle 12 # 12-103</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Síguenos</h4>
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+        <a href="https://wa.me/573048203232" target="_blank">WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Ramona Gómez. Todos los derechos reservados.</span>
+      <span>Calle 12 # 12-103</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/573048203232" target="_blank" class="wa-float">Escríbenos por WhatsApp</a>
+
+</body>
+</html>
